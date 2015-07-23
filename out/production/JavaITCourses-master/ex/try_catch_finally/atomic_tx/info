@@ -1,0 +1,61 @@
+Это исключение характеризует собой временную неудачу. Значит
+1. ничего не было сделано
+2. попробуйте вызвать метод еще раз (и еще раз, и еще раз, ...)
+
+public class TryAgainException extends Exception {}
+Это исключение характеризует полное блокирование счета, значит
+1. ничего не было сделано
+2. нет смысла делать повторные вызовы (получишь то же исключение)
+
+public class BlockAccountException extends Exception {}
+Account - это счет отдельного пользователя.
+change(int delta) - метод, меняющий состояние счета на delta (может быть отрицательным)
+
+public interface Account {
+    public void change(int delta) throws TryAgainException, BlockAccountException;
+}
+AccountManager - это та часть системы, которую необходимо реализовать (менеджер счетов).
+Получив массив счетов и массив сумм на изменение (такой же длины) он должен вызвать для всех счетов accounts[k].change(deltas[k]). Если на каком-то счете получили TryAgainException - надо просто повторять операцию, если получили BlockAccountException, то надо "откатить ситуацию назад" (вернуть деньги на счета, с которых уже сняли/начислили). Возвращает true - если получилось перевести деньги на все счета, false - в обратном случае.
+
+public interface AccountManager {
+    public boolean transfer(Account[] accounts, int[] deltas);
+}
+Плохая реализация. "Трусливый" менеджер:
+1) плохо: столкнувшись с исключением сразу сдается
+2) плохо: не пытается вернуть состояние счетов
+
+public class AccountManagerImpl implements AccountManager {
+    public boolean transfer(Account[] accounts, int[] deltas) {
+        try {
+            for (int k = 0; k < accounts.length; k++) {
+                accounts[k].change(deltas[k]);
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+}
+Плохая реализация. "безоткатный" менеджер:
+1) молодец: столкнувшись с TryAgainException не сдается
+2) плохо: столкнувшись с BlockAccountException не пытается вернуть состояние счетов
+
+public class AccountManagerImpl implements AccountManager {
+    public boolean transfer(Account[] accounts, int[] deltas) {
+        try {
+            for (int k = 0; k < accounts.length; k++) {
+                while (true) {
+                    try {
+                        accounts[k].change(deltas[k]);
+                        break;
+                    } catch (TryAgainException e) {
+                        // NOP
+                    }
+                }
+            }
+        } catch (BlockAccountException e) {
+            return false;
+        }
+        return true;
+    }
+}
