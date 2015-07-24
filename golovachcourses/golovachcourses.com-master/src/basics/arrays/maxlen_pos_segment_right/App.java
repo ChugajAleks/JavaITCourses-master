@@ -1,6 +1,6 @@
 package basics.arrays.maxlen_pos_segment_right;
 
-import basics.arrays.maxlen_pos_segment_right.ArrayUtils;
+//import basics.arrays.maxlen_pos_segment_right.ArrayUtils;
 
 import java.util.Arrays;
 
@@ -24,7 +24,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        int[] out = ArrayUtils.lookFor(new int[]{0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0});
+        int[] out = ArrayUtils_My.lookFor(new int[]{0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0});
 
         System.out.println(Arrays.toString(out));
 
