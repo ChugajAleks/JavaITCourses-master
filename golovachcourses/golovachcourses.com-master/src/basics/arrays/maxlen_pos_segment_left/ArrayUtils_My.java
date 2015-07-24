@@ -1,10 +1,4 @@
 package basics.arrays.maxlen_pos_segment_left;
-
-
-//import basics.arrays.maxlen_pos_segment_left.ArrayUtils_My;
-
-import java.util.Arrays;
-
 /**
  * В заданном одномерном массиве найти диапазон максимальной ширины, состоящий из положительных элементов (больше 0).
  * Ответом является массив из двух элементов, где
@@ -17,19 +11,38 @@ import java.util.Arrays;
  * lookFor([1, 1, 1]) = [0, 2]
  * lookFor([0, 1, 1]) = [1, 2]
  * lookFor([1, 1, 0]) = [0, 1]
- * lookFor([1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1]) = [8, 14]
  * lookFor([0, -100, 1, 1, 0, -1]) = [2, 3]
  * lookFor([1, 1, 0, 1, 1]) = [0, 1] // возвращаем ЛЕВЫЙ
  * lookFor([0, -1, 0, -1]) = [] // нет положительных чисел
  */
-public class App {
+import java.util.Arrays;
 
-    public static void main(String[] args) {
+public class ArrayUtils_My {
 
-        int[] out = ArrayUtils_My.lookFor(new int[]{0, -1, 0, -1});
-
-        System.out.println(Arrays.toString(out));
-
-
+    public static int[] lookFor(int[] array) {
+      boolean newDiapazon = false;
+      int startDiapazon = 0;
+      int stopDiapazon = 0;
+      int[] result = {0, 0};
+      boolean posElementPresent = false;
+      for(int i = 0; i < array.length; i++){
+        if(array[i] > 0 && !newDiapazon){
+          newDiapazon = true;
+          startDiapazon = i;
+          posElementPresent = true;
+        }
+        else if((array[i] <= 0 && newDiapazon) || (i == array.length -1 && array[i] > 0 && newDiapazon)){
+          newDiapazon = false;
+          stopDiapazon = (i == array.length -1) ? i : i-1;        
+          if((stopDiapazon - startDiapazon) > (result[1] - result[0])){
+            result[0] = startDiapazon;
+            result[1] = stopDiapazon;
+            System.out.println("intermediat result " + Arrays.toString(result));
+          } 
+        }
+      }
+      if(!posElementPresent)
+        result = new int[0];
+		return result;
     }
 }
