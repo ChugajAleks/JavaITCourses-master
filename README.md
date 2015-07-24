@@ -90,7 +90,7 @@ Codes with labs and test for each of below lessons:
   - [x] basics.arrays.maxlen_pos_segment_right
   - [x] basics.array.rotate_2D
   - [x] basics.arrays.maxarea_pos_rect
-  - [ ] basics.array.rotate_3D
+  - [x] basics.array.rotate_3D
   - [x] basics.strings.chars_shift
 
   - [x] 2.1 labs
