@@ -25,23 +25,31 @@ import java.util.Arrays;
 public class ArrayUtils_My {
   public static long maxArea(int[][] array) {
  	 
+    if(checkArray(array) <= 0)
+      return -1;
+    
     int h = array.length;
     int w = array[0].length;
     int[][] arr = new int[h][w];
+    //fill Matrix to 0
+    for(int i = 1; i < h; i++){
+      for(int j = 0; j < w; j++){
+        arr[i][j] = 0;
+      }
+    }
     //in first string round value to 1 or 0
     for(int i = 0; i < w; i++)
       arr[0][i] = (array[0][i] > 0) ? 1 : 0;
     //counting sequence positive numbers in colums
     for(int i = 1; i < h; i++){
-      for(int j = 0; j < w; j++){
+      for(int j = 0; j < array[i].length; j++){
         arr[i][j] = (array[i][j] > 0) ? arr[i - 1][j] + 1 : 0;
       }
     }
     System.out.println("h = "+h+" w = "+w );
     System.out.println(Arrays.deepToString(array));
     System.out.println(Arrays.deepToString(arr));
-    //calculate max positive rectangle area
-    
+    //calculate max positive rectangle area    
     long maxArea = 0;
     for(int i = h -1; i > 0; i--){
       for(int j = 0; j < w; j++){
@@ -62,4 +70,24 @@ public class ArrayUtils_My {
     }
     return maxArea;
   }
+  
+  public static int checkArray(int[][] arr){
+    int greatThenZero = 0;
+    if(arr == null || arr.length == 0)  
+      throw new IllegalArgumentException();
+    for(int i = 1; i < arr.length; i++){
+      if (arr[i] == null)
+        return -1;
+      if (arr[i].length == 0)
+        return -1;
+      for(int j = 0; j < arr[i].length; j++){
+        if(arr[i][j] > 0)
+          greatThenZero++;
+      }
+    }
+    if(greatThenZero > 0)
+      return 1;
+    else
+      return -1;
+  } 
 }

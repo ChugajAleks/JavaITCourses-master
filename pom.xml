@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>basics.arrays.maxarea_pos_rect</groupId>
+    <groupId>basics.arrays.maxlen_pos_segment_left</groupId>
     <artifactId>desktop-console-java</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -26,7 +26,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>basics.arrays.maxarea_pos_rect.Test_My</mainClass>
+                            <mainClass>basics.arrays.maxlen_pos_segment_left.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

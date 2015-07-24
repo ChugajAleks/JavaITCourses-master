@@ -1,7 +1,7 @@
 package basics.arrays.maxlen_pos_segment_left;
 
 
-import basics.arrays.maxlen_pos_segment_left.ArrayUtils;
+//import basics.arrays.maxlen_pos_segment_left.ArrayUtils_My;
 
 import java.util.Arrays;
 
@@ -17,6 +17,7 @@ import java.util.Arrays;
  * lookFor([1, 1, 1]) = [0, 2]
  * lookFor([0, 1, 1]) = [1, 2]
  * lookFor([1, 1, 0]) = [0, 1]
+ * lookFor([1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1]) = [8, 14]
  * lookFor([0, -100, 1, 1, 0, -1]) = [2, 3]
  * lookFor([1, 1, 0, 1, 1]) = [0, 1] // возвращаем ЛЕВЫЙ
  * lookFor([0, -1, 0, -1]) = [] // нет положительных чисел
@@ -25,7 +26,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        int[] out = ArrayUtils.lookFor(new int[]{1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1});
+        int[] out = ArrayUtils_My.lookFor(new int[]{0, -1, 0, -1});
 
         System.out.println(Arrays.toString(out));
 
