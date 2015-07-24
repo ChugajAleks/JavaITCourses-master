@@ -20,6 +20,8 @@ public class MathUtilsMy {
             for(int j = 1; j <= (max - i*i)/j; j++){
                 count++;
             }
+
+
         }
         return count;
 
