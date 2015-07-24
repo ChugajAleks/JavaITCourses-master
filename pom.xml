@@ -26,7 +26,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>basics.arrays.maxarea_pos_rect.Test</mainClass>
+                            <mainClass>basics.arrays.maxarea_pos_rect.Test_My</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
