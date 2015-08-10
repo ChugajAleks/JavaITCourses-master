@@ -9,10 +9,10 @@ import java.util.Arrays;
 public class DeleteZeroInStream_My {
     public static void main(String[] args) throws IOException {
       final int BUFF_SIZE = 4;
-      final byte[] DATA_IN = {0, 1, 1, 1, 0};
+      final byte[] DATA_IN = {0,1,1,1,0,1,0,1,0,1,0,0,1,1,0,1,0};
       byte[] dataOut = new byte[DATA_IN.length];
       InputStream src = new ByteArrayInputStream(DATA_IN);
-      ByteArrayOutputStream out = new ByteArrayOutputStream(dataOut.length);
+      ByteArrayOutputStream out = new ByteArrayOutputStream();
       
       filterArray(src, out, BUFF_SIZE);
       dataOut = out.toByteArray();
@@ -35,7 +35,7 @@ public class DeleteZeroInStream_My {
         switch(state){
           case ZERO_STATE:
           if(buff[index] == 0)
-            break;
+            state = ZERO_STATE;
           else{
             previousIndex = index;
             state = NUMBER_STATE;
@@ -43,20 +43,20 @@ public class DeleteZeroInStream_My {
           break;
           case NUMBER_STATE:
           if(buff[index] == 0){
-            out.write(buff, previousIndex, index - previousIndex - 1);
+            out.write(buff, previousIndex, index - previousIndex);
             state = ZERO_STATE;
           }
           else{
-            break;
+            state = NUMBER_STATE;
           }
           break;
         }
       }
       if(state == ZERO_STATE){
-        continue;
+        state = ZERO_STATE;
       }
       else
-        out.write(buff, previousIndex, buff.length - previousIndex);
+        out.write(buff, previousIndex , buff.length - 1 - previousIndex);
     }        
   }
 
