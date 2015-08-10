@@ -11,7 +11,8 @@ public class Hanoi_q {
         f = new Stack<>();
         h = new Stack<>();
         t = new Stack<>();
-        /*f.push(3);*/
+        f.push(4);
+        f.push(3);
         f.push(2);
         f.push(1);
         exchange(f, h, t, f.size());
@@ -33,7 +34,6 @@ public class Hanoi_q {
             exchange(help, from, to, count-1);
         }
     }
-
     private static String checkStack(Stack<Integer> stack){
         String result = "noName";
         if(stack == f)result = "from";
