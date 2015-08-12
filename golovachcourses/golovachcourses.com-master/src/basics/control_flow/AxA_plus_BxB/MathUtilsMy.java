@@ -1,5 +1,4 @@
 package basics.control_flow.AxA_plus_BxB;
-
 /**
  *
  * Реализовать функцию, которая по целочисленному аргументу 'с' возвращает количество целочисленных решений неравенства
@@ -13,11 +12,18 @@ package basics.control_flow.AxA_plus_BxB;
  * (a=1,b=1), (a=1,b=2), (a=1,b=3), (a=2,b=1), (a=2,b=2), (a=2,b=3), (a=3,b=1), (a=3,b=2)
  *
  */
+public class MathUtilsMy {
 
-public class App {
+    public static int lookFor(int max) {
+        int count = 0;
+        for (int i = 1; i < max; i++) {
+            for(int j = 1; j <= (max - i*i)/j; j++){
+                count++;
+            }
 
-    public static void main(String[] args) {
-        System.out.println(MathUtilsMy.lookFor(14));
+
+        }
+        return count;
+
     }
-
 }

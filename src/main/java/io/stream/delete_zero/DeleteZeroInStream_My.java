@@ -9,8 +9,8 @@ import java.util.Arrays;
 public class DeleteZeroInStream_My {
     public static void main(String[] args) throws IOException {
       final int BUFF_SIZE = 4;
-      final byte[] DATA_IN = {0,1,1,1,0,1,0,1,0,1,0,0,1,1,0,1,0};
-      byte[] dataOut = new byte[DATA_IN.length];
+      final byte[] DATA_IN = {0,1,1,1,0,1,0,1,0,1,0,0,1,1};
+      byte[] dataOut;
       InputStream src = new ByteArrayInputStream(DATA_IN);
       ByteArrayOutputStream out = new ByteArrayOutputStream();
       
@@ -56,7 +56,7 @@ public class DeleteZeroInStream_My {
         state = ZERO_STATE;
       }
       else
-        out.write(buff, previousIndex , buff.length - 1 - previousIndex);
+        out.write(buff, previousIndex , count - previousIndex);
     }        
   }
 

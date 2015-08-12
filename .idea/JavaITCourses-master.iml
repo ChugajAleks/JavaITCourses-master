@@ -5,6 +5,7 @@
     <output-test url="file://$MODULE_DIR$/out/test/JavaITCourses-master" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/Procedure/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/out" />
     </content>
     <orderEntry type="inheritedJdk" />
