@@ -6,6 +6,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 
+import static thread.thread.CodeFromCourse.CopyStream.CopyUtil_writer_is_the_caller.copyMultiThreaf;
+
 /**
  * Created by aleks on 02.09.15.
  */
@@ -18,7 +20,8 @@ public class DemoCopy {
 
         try {
             //CopyUtil.copy(src, dest);
-            CopyUtil.copyArray(src, dest);
+            //CopyUtil.copyArray(src, dest);
+            copyMultiThreaf(src, dest);
         } catch (IOException e) {
             e.printStackTrace();
         }
