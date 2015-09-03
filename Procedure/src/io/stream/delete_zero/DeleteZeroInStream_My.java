@@ -13,7 +13,6 @@ public class DeleteZeroInStream_My {
       byte[] dataOut;
       InputStream src = new ByteArrayInputStream(DATA_IN);
       ByteArrayOutputStream out = new ByteArrayOutputStream();
-      
       filterArray(src, out, BUFF_SIZE);
       dataOut = out.toByteArray();
       System.out.println(Arrays.toString(dataOut));
